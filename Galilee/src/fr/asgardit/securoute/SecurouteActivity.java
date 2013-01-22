@@ -1,4 +1,4 @@
-package fr.asgardit.galileo;
+package fr.asgardit.securoute;
 
 //import java.text.DecimalFormat;
 
@@ -20,7 +20,7 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-public class GalileoActivity extends Activity {
+public class SecurouteActivity extends Activity {
 	
 	/*TODO : 
 	 * ajouter paramétrages route sèche, mouillée
@@ -66,7 +66,7 @@ public class GalileoActivity extends Activity {
         mSpeedm = (TextView) this.findViewById(R.id.speedm);
         mSpeedk = (TextView) this.findViewById(R.id.speedk);
         mAccel = (TextView) this.findViewById(R.id.accel);
-        mMaxAccel = (TextView) this.findViewById(R.id.maxAccel);
+        //mMaxAccel = (TextView) this.findViewById(R.id.maxAccel);
         mDistSecu = (TextView) this.findViewById(R.id.distsec);
         mDistFrein = (TextView) this.findViewById(R.id.distfrein);
         mDistArret = (TextView) this.findViewById(R.id.distarret);
@@ -166,7 +166,7 @@ public class GalileoActivity extends Activity {
 
             DecimalFormat frm = new DecimalFormat("0");
             mAccel.setText(frm.format(Math.abs(filteredAccel[2])));
-    		mMaxAccel.setText(frm.format(maxAccel));
+    		//mMaxAccel.setText(frm.format(maxAccel));
     	}
     	
     	/*if (event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
