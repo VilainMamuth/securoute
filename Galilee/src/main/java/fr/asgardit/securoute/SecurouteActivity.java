@@ -169,13 +169,13 @@ public class SecurouteActivity extends Activity {
     		//mMaxAccel.setText(frm.format(maxAccel));
     	}
     	
-    	/*if (event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
+    	if (event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
         	float x = event.values[0]; 
         	float y = event.values[1]; 
         	float z = event.values[2]; 
         	
-        	mAccel.setText(frm.format(z));
-		}*/
+        	//mAccel.setText(frm.format(z));
+		}
     }
     
     
