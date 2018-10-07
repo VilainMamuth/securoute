@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="tempsReaction"
+        android:title="Temps de reaction (secondes)"
+        android:summary=""
+        android:defaultValue="2" />
+
+    <EditTextPreference
+        android:key="masseVehicule"
+        android:title="Poids du véhicule (kg)"
+        android:summary=""
+        android:defaultValue="1200" />
+
+    <EditTextPreference
+        android:key="massePilote"
+        android:title="Poids du conducteur (kg)"
+        android:summary=""
+        android:defaultValue="80" />
+
+</PreferenceScreen>
