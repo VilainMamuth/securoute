@@ -1,21 +1,23 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <EditTextPreference
-        android:key="tempsReaction"
-        android:title="Temps de reaction (secondes)"
-        android:summary=""
-        android:defaultValue="2" />
+        app:key="tempsReaction"
+        app:title="@string/pref_reaction_time"
+        app:defaultValue="2"
+        app:useSimpleSummaryProvider="true" />
 
     <EditTextPreference
-        android:key="masseVehicule"
-        android:title="Poids du véhicule (kg)"
-        android:summary=""
-        android:defaultValue="1200" />
+        app:key="masseVehicule"
+        app:title="@string/pref_vehicle_weight"
+        app:defaultValue="1200"
+        app:useSimpleSummaryProvider="true"/>
 
     <EditTextPreference
-        android:key="massePilote"
-        android:title="Poids du conducteur (kg)"
-        android:summary=""
-        android:defaultValue="80" />
+        app:key="massePilote"
+        app:title="@string/pref_driver_weight"
+        app:defaultValue="80"
+        app:useSimpleSummaryProvider="true"/>
 
 </PreferenceScreen>

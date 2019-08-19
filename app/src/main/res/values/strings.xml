@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Securoute</string>
-    <string name="action_settings">Réglages</string>
     <string name="latitude">Lat.</string>
     <string name="longitude">Lon.</string>
     <string name="precision">Précision</string>
@@ -23,8 +22,14 @@
     <string name="deceleration">Décélération</string>
     <string name="G">G</string>
 
+    <string name="action_help">Aide</string>
+    <string name="action_settings">Réglages</string>
+
 
     <!-- Strings related to Settings -->
+    <string name="pref_reaction_time">Temps de reaction (secondes)</string>
+    <string name="pref_vehicle_weight">Poids du véhicule (kg)</string>
+    <string name="pref_driver_weight">Poids du conducteur (kg)</string>
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>

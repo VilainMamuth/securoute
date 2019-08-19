@@ -3,12 +3,12 @@ package fr.asgardit.securoute;
 import java.text.DecimalFormat;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -17,21 +17,19 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 //import android.location.LocationProvider;
-import android.location.LocationProvider;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /*
 import com.google.android.gms.common.ConnectionResult;
@@ -74,6 +72,7 @@ public class SecurouteActivity extends AppCompatActivity implements LocationList
     private TextView mDistFrein;
     private TextView mDistArret;
     private TextView mDecel;
+    private ImageView mDecelStatus;
     private TextView mDecelg;
     private TextView mForce;
     private TextView mPoidsCol;
@@ -114,6 +113,7 @@ public class SecurouteActivity extends AppCompatActivity implements LocationList
         mDistArret = (TextView) this.findViewById(R.id.distarret);
 
         mDecel = (TextView) this.findViewById(R.id.decel);
+        mDecelStatus = (ImageView) this.findViewById(R.id.decel_status);
         mDecelg = (TextView) this.findViewById(R.id.decelg);
         mForce = (TextView) this.findViewById(R.id.force);
         mPoidsCol = (TextView) this.findViewById(R.id.poidsCol);
@@ -214,9 +214,9 @@ public class SecurouteActivity extends AppCompatActivity implements LocationList
                 startActivity(i);
 
                 return true;
-            //case R.id.help:
-            //    showHelp();
-            //    return true;
+            case R.id.action_help:
+                showHelp();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -247,6 +247,19 @@ public class SecurouteActivity extends AppCompatActivity implements LocationList
         mDistArret.setText(frm.format(dp + df));
 
         mDecel.setText(frm.format(dclcol));
+        if (dclcol>200){
+            mDecel.setTextColor(Color.rgb(255, 0, 0));
+            mDecelStatus.setImageDrawable(getDrawable(R.drawable.ic_dead));
+            mDecelStatus.setVisibility(View.VISIBLE);
+        }else{
+            if (mDecelStatus.getVisibility() != View.INVISIBLE) {
+                mDecelStatus.setVisibility(View.INVISIBLE);
+            }
+            if (dclcol>150 ){
+                mDecel.setTextColor(Color.rgb(255, 165, 0));
+            }
+        }
+
         mDecelg.setText(frm.format(dclg));
         mForce.setText(frm.format(frccol));
         mPoidsCol.setText(frm.format(poidsCol));
@@ -493,6 +506,7 @@ public class SecurouteActivity extends AppCompatActivity implements LocationList
 
     /************ Clicks **************/
 
+
     private void popup(String titre, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
@@ -516,6 +530,10 @@ public class SecurouteActivity extends AppCompatActivity implements LocationList
         popup("Distance d'arrêt","Distance totale parcourue pour s'arrêter. Tout obstacle fixe situé plus près sera percuté.");
     }
 
+    private void showHelp(){
+        popup("Information", "Les données de collision sont basées sur un choc, contre un obstacle fixe, d'une durée de 100 millisecondes (durée constatée lors de crash tests à 50Km/h)." +
+                " La masse du véhicule peut être modifiée dans les réglages.");
+    }
 
 
 }
